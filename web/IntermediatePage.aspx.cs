@@ -11,7 +11,7 @@ public partial class IntermediatePage : System.Web.UI.Page
     {
         Intermediate.TumblrVerifier = Request.QueryString["oauth_verifier"];
         Intermediate.IsResponseReceived = true;
-
+        
         ScriptManager.RegisterClientScriptBlock(this, typeof(string), "CloseSelf", "CloseSelf();", true);
     }
 }
