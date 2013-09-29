@@ -30,6 +30,8 @@ namespace TumblrTweaksWin
 
         private void LoadPosts()
         {
+            System.Threading.Thread.Sleep(5000);
+
             OAuth.ConsumerKey = "lQS712YUjSnDppww0NV8EcFn1Y4Ch7p6cSnUB4g11MKt314hJs";
             OAuth.ConsumerSecret = "fXC9IhAMyr91jzS437ycXrw4GdI5fHyI3ZesWCpacZ7zS1EILL";
 
@@ -75,9 +77,9 @@ namespace TumblrTweaksWin
                         {
                             foreach (string tag in item.tags)
                             {
-                                if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_[0-9]s"))
+                                if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_[0-9]?[0-9]?[0-9]?[0-9]?[0-9]s"))
                                 {
-                                    DateTime dt = new DateTime(item.timestamp);
+                                    DateTime dt = DateTime.Parse(item.date);
                                     System.TimeSpan diffResult = DateTime.Now.Subtract(dt);
                                     if (diffResult.TotalSeconds > (double.Parse(tag.Substring(1, tag.IndexOf('s') - 1))))
                                     {
@@ -85,9 +87,9 @@ namespace TumblrTweaksWin
                                     }
 
                                 }
-                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_[0-9]m"))
+                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_[0-9]?[0-9]?[0-9]?[0-9]?[0-9]m"))
                                 {
-                                    DateTime dt = new DateTime(item.timestamp);
+                                    DateTime dt = DateTime.Parse(item.date);
                                     System.TimeSpan diffResult = DateTime.Now.Subtract(dt);
                                     if (diffResult.TotalMinutes > (double.Parse(tag.Substring(1, tag.IndexOf('m') - 1))))
                                     {
@@ -95,9 +97,9 @@ namespace TumblrTweaksWin
                                     }
 
                                 }
-                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_[0-9]h"))
+                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_[0-9]?[0-9]?[0-9]?[0-9]?[0-9]h"))
                                 {
-                                    DateTime dt = new DateTime(item.timestamp);
+                                    DateTime dt = DateTime.Parse(item.date);
                                     System.TimeSpan diffResult = DateTime.Now.Subtract(dt);
                                     if (diffResult.TotalHours > (double.Parse(tag.Substring(1, tag.IndexOf('h') - 1))))
                                     {
@@ -105,9 +107,9 @@ namespace TumblrTweaksWin
                                     }
                                 }
 
-                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_[0-9]d"))
+                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_[0-9]?[0-9]?[0-9]?[0-9]?[0-9]d"))
                                 {
-                                    DateTime dt = new DateTime(item.timestamp);
+                                    DateTime dt = DateTime.Parse(item.date);
                                     System.TimeSpan diffResult = DateTime.Now.Subtract(dt);
                                     if (diffResult.TotalDays > (double.Parse(tag.Substring(1, tag.IndexOf('d') - 1))))
                                     {
@@ -115,36 +117,36 @@ namespace TumblrTweaksWin
                                     }
                                 }
 
-                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_r[0-9]s"))
+                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_r[0-9]?[0-9]?[0-9]?[0-9]?[0-9]s"))
                                 {
-                                    DateTime dt = new DateTime(item.timestamp);
+                                    DateTime dt = DateTime.Parse(item.date);
                                     System.TimeSpan diffResult = DateTime.Now.Subtract(dt);
                                     if (diffResult.TotalSeconds > (double.Parse(tag.Substring(3, tag.IndexOf('s') - 2))))
                                     {
                                         post2repost.Add(new Reblog() { id = item.id, reblog_key = item.reblog_key });
                                     }
                                 }
-                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_r[0-9]m"))
+                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_r[0-9]?[0-9]?[0-9]?[0-9]?[0-9]m"))
                                 {
-                                    DateTime dt = new DateTime(item.timestamp);
+                                    DateTime dt = DateTime.Parse(item.date);
                                     System.TimeSpan diffResult = DateTime.Now.Subtract(dt);
                                     if (diffResult.TotalMinutes > (double.Parse(tag.Substring(2, tag.IndexOf('m') - 2))))
                                     {
                                         post2repost.Add(new Reblog() { id = item.id, reblog_key = item.reblog_key });
                                     }
                                 }
-                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_r[0-9]h"))
+                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_r[0-9]?[0-9]?[0-9]?[0-9]?[0-9]h"))
                                 {
-                                    DateTime dt = new DateTime(item.timestamp);
+                                    DateTime dt = DateTime.Parse(item.date);
                                     System.TimeSpan diffResult = DateTime.Now.Subtract(dt);
                                     if (diffResult.TotalHours > (double.Parse(tag.Substring(2, tag.IndexOf('h') - 2))))
                                     {
                                         post2repost.Add(new Reblog() { id = item.id, reblog_key = item.reblog_key });
                                     }
                                 }
-                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_r[0-9]d"))
+                                else if (System.Text.RegularExpressions.Regex.IsMatch(tag, "_r[0-9]?[0-9]?[0-9]?[0-9]?[0-9]d"))
                                 {
-                                    DateTime dt = new DateTime(item.timestamp);
+                                    DateTime dt = DateTime.Parse(item.date);
                                     System.TimeSpan diffResult = DateTime.Now.Subtract(dt);
                                     if (diffResult.TotalDays > (double.Parse(tag.Substring(2, tag.IndexOf('d') - 2))))
                                     {
