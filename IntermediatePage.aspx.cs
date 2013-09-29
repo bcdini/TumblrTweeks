@@ -15,3 +15,10 @@ public partial class IntermediatePage : System.Web.UI.Page
         ScriptManager.RegisterClientScriptBlock(this, typeof(string), "CloseSelf", "CloseSelf();", true);
     }
 }
+
+public static class Intermediate
+{
+    public static string TumblrVerifier = string.Empty;
+
+    public static bool IsResponseReceived = false;
+}
